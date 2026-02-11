@@ -18,7 +18,6 @@
     --font-display: 'Anton', 'Impact', sans-serif;
     --font-glitch: 'Oswald', 'Anton', sans-serif;
     --font-mono: 'Space Mono', 'Courier New', monospace;
-    --font-hand: 'Patrick Hand', cursive;
 }
 
 html {
@@ -35,6 +34,10 @@ body {
     color: var(--black);
     line-height: 1.6;
     overflow-x: hidden;
+}
+img, svg {
+    max-width: 100%;
+    height: auto;
 }
 
 /* ==========================================
@@ -712,6 +715,11 @@ h1, h2, h3 {
     margin-bottom: 0.75rem;
 }
 
+.project-tag.light-tag {
+    background: var(--white);
+    color: var(--black);
+}
+
 /* ==========================================
    EDUCATION SECTION
    ========================================== */
@@ -1054,27 +1062,22 @@ h1, h2, h3 {
         justify-content: center;
     }
 
-    .code-block-wrap {
-        justify-content: center;
-    }
     .hero-title {
         font-size: 2.5rem;
+        white-space: normal;
     }
     
     .hero-subtitle {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
     }
     
     .section-title {
         font-size: 2.5rem;
     }
     
-    .cta-buttons {
-        flex-direction: column;
-    }
-    
-    .btn {
-        width: 100%;
+    .hero-cta-column {
+        align-items: center;
+        padding: 0.2rem;
     }
     
     .experience-grid,
@@ -1098,5 +1101,36 @@ h1, h2, h3 {
     .code-block {
         font-size: 0.75rem;
         padding: 1.5rem;
+        width: 100%;
+        max-width: 520px;
+        height: auto;
+    }
+
+    .hero-right {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .hero-tags {
+        width: 100%;
+    }
+
+    .code-note-row {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-cta-column {
+        width: 100%;
+        align-items: center;
+    }
+
+    .hero-tags {
+        align-items: center;
+    }
+
+    .tag-row,
+    .tag-row.align-right {
+        justify-content: center;
     }
 }
