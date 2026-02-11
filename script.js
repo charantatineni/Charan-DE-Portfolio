@@ -116,24 +116,30 @@ const experienceCards = document.querySelectorAll('.experience-card');
 experienceCards.forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transition = 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        this._rect = this.getBoundingClientRect();
     });
     
     card.addEventListener('mousemove', function(e) {
-        const rect = this.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-        
-        this.style.transform = `translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        const rect = this._rect;
+        if (!rect) return;
+        this._mx = e.clientX;
+        this._my = e.clientY;
+        if (this._raf) return;
+        this._raf = requestAnimationFrame(() => {
+            const x = this._mx - rect.left;
+            const y = this._my - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            this.style.transform = `translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            this._raf = null;
+        });
     });
     
     card.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+        this._rect = null;
     });
 });
 
@@ -143,25 +149,31 @@ skillCategories.forEach(category => {
     category.addEventListener('mouseenter', function() {
         this.style.transition = 'transform 0.2s ease-out';
         this.classList.add('tilt-glow');
+        this._rect = this.getBoundingClientRect();
     });
     
     category.addEventListener('mousemove', function(e) {
-        const rect = this.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-        
-        this.style.transform = `translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        const rect = this._rect;
+        if (!rect) return;
+        this._mx = e.clientX;
+        this._my = e.clientY;
+        if (this._raf) return;
+        this._raf = requestAnimationFrame(() => {
+            const x = this._mx - rect.left;
+            const y = this._my - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            this.style.transform = `translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            this._raf = null;
+        });
     });
     
     category.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
         this.classList.remove('tilt-glow');
+        this._rect = null;
     });
 });
 

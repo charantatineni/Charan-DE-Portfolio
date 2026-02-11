@@ -35,6 +35,15 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 }
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+img, svg {
+    max-width: 100%;
+    height: auto;
+}
 img, svg {
     max-width: 100%;
     height: auto;
@@ -1091,6 +1100,7 @@ h1, h2, h3 {
     .hero-media {
         flex-direction: column;
         align-items: center;
+        gap: 1.5rem;
     }
     
     .hero-image {
@@ -1102,7 +1112,7 @@ h1, h2, h3 {
         font-size: 0.75rem;
         padding: 1.5rem;
         width: 100%;
-        max-width: 520px;
+        max-width: 100%;
         height: auto;
     }
 
@@ -1112,12 +1122,19 @@ h1, h2, h3 {
     }
 
     .hero-tags {
+        overflow-x: hidden;
+    }
+
+    .hero-tags {
         width: 100%;
     }
 
     .code-note-row {
         width: 100%;
         justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
     }
 
     .hero-cta-column {
